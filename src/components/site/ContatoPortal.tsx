@@ -2,8 +2,8 @@
 
 import { useCallback, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import fieldImg from "@/assets/field.jpg";
-import industrialImg from "@/assets/industrial.jpg";
+import fieldImg from "@/assets/newimg1.jpeg";
+import industrialImg from "@/assets/newimg2.jpeg";
 import logoCCA from "@/assets/ChatGPT Image 11 de mai. de 2026, 15_25_03 (1).png";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";

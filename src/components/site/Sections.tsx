@@ -1,7 +1,7 @@
 import { useReveal, useCountUp } from "@/hooks/use-reveal";
-import industrialImg from "@/assets/industrial.jpg";
+import industrialImg from "@/assets/newimg2.jpeg";
 import sistemaMockImg from "@/assets/VS PC VS MOBILE MOCK SITE 1.png";
-import fieldImg from "@/assets/field.jpg";
+import fieldImg from "@/assets/newimg1.jpeg";
 import logoCCA from "@/assets/ChatGPT Image 11 de mai. de 2026, 15_25_03 (1).png";
 
 /* Helper — small section eyebrow */

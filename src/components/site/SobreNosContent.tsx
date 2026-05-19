@@ -1,4 +1,4 @@
-import industrialImg from "@/assets/industrial.jpg";
+import industrialImg from "@/assets/newimg3.jpeg";
 
 const GESTOES = [
   "Gestão Multidisciplinar em Campo",
