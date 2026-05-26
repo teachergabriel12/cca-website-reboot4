@@ -43,7 +43,7 @@ export function Problema() {
     <section
       id="problema"
       ref={ref}
-      className="reveal py-28 lg:py-36 relative bg-background overflow-hidden"
+      className="reveal site-slide py-28 lg:py-36 relative bg-background overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-60 pointer-events-none" />
       {/* Section divider */}
@@ -105,7 +105,7 @@ export function Solucao() {
     <section
       id="pilares"
       ref={ref}
-      className="reveal py-28 lg:py-40 bg-background relative overflow-hidden"
+      className="reveal site-slide py-28 lg:py-40 bg-background relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-55 pointer-events-none" />
       <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-cyan-electric/15 rounded-full blur-3xl" />
@@ -172,7 +172,7 @@ export function Plataforma() {
     <section
       id="solucao"
       ref={ref}
-      className="reveal py-28 lg:py-36 bg-deep text-cream relative overflow-hidden"
+      className="reveal site-slide py-28 lg:py-36 bg-deep text-cream relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-dark opacity-25 pointer-events-none" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-electric/10 rounded-full blur-3xl" />
@@ -226,7 +226,7 @@ export function Sistema() {
     <section
       id="sistema"
       ref={ref}
-      className="reveal py-28 lg:py-36 bg-background relative overflow-hidden"
+      className="reveal site-slide py-28 lg:py-36 bg-background relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-45 pointer-events-none" />
       <div className="absolute -top-24 -left-24 w-[520px] h-[520px] bg-cyan-electric/10 rounded-full blur-3xl" />
@@ -244,8 +244,8 @@ export function Sistema() {
             <span className="text-gradient">centralizado</span> para decisões seguras
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
-            Centralizamos as etapas do pós-obra em um painel: registro, triagem,
-            diagnóstico, laudo e rastreabilidade. Assim, você ganha previsibilidade,
+            Centralizamos as etapas do pós-obra na plaforma: Demanda, Registro,
+            Triagem, Planejamento, Inspeção, Diagnóstico, Prescrição técnica, Laudo e Fechamento. Assim, você ganha previsibilidade,
             reduz retrabalho e mantém evidências auditáveis.
           </p>
         </div>
@@ -272,33 +272,33 @@ export function Fluxo() {
   const ref = useReveal<HTMLDivElement>();
   const steps = [
     "Demanda", "Registro", "Triagem", "Planejamento", "Inspeção",
-    "Diagnóstico", "Solução / Prescrição técnica", "Laudo", "Fechamento",
+    "Diagnóstico", "Prescrição técnica", "Laudo", "Fechamento",
   ];
   return (
     <section
       id="fluxo"
       ref={ref}
-      className="reveal py-28 lg:py-36 bg-deep text-cream relative overflow-hidden"
+      className="reveal site-slide py-28 lg:py-36 bg-deep text-cream relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-dark opacity-30 pointer-events-none" />
       <div className="absolute inset-0 gradient-aurora opacity-70 pointer-events-none" />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex">
-            <Eyebrow n="04" label="Fluxo operacional" />
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-16 xl:gap-24 lg:items-center">
+          <div className="text-center lg:text-left max-w-3xl mx-auto lg:mx-0 mb-12 lg:mb-0">
+            <div className="inline-flex">
+              <Eyebrow n="04" label="Fluxo operacional" />
+            </div>
+            <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl font-medium leading-[1.02] tracking-tight text-balance">
+              Gestão técnica estruturada em{" "}
+              <span className="text-gradient">todas as etapas</span> da pós-obra
+            </h2>
+            <p className="mt-6 text-cream/75 text-lg leading-relaxed">
+              Cada etapa é conduzida com critérios técnicos, garantindo rastreabilidade,
+              padronização e segurança na tomada de decisão.
+            </p>
           </div>
-          <h2 className="font-display text-4xl lg:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-tight text-balance">
-            Gestão técnica estruturada em{" "}
-            <span className="text-gradient">todas as etapas</span> da pós-obra
-          </h2>
-          <p className="mt-6 text-cream/75 text-lg">
-            Cada etapa é conduzida com critérios técnicos, garantindo rastreabilidade,
-            padronização e segurança na tomada de decisão.
-          </p>
-        </div>
 
-        <div className="relative">
-          <div className="absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-electric/40 to-transparent hidden lg:block" />
+          <div className="relative min-w-0">
           {/* Mobile — timeline cards (like the reference) */}
           <ol className="sm:hidden relative">
             {/* dashed spine */}
@@ -373,54 +373,49 @@ export function Fluxo() {
             ))}
           </div>
 
-          {/* Desktop — timeline (like mobile, but centered) */}
-          <ol className="hidden lg:block relative max-w-5xl mx-auto">
-            {/* dashed spine */}
+          {/* Desktop — timeline intercalada (coluna direita) */}
+          <ol className="hidden lg:flex lg:flex-col lg:justify-between lg:h-[min(58dvh,560px)] relative w-full">
             <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-2 bottom-2 border-l border-dashed border-border/70" />
 
             {steps.map((s, i) => {
               const flip = i % 2 === 1;
               const n = String(i + 1).padStart(2, "0");
               return (
-                <li key={s} className="relative py-4">
-                  {/* node dot on the spine */}
-                  <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-cyan-electric shadow-[0_0_0_5px_oklch(0.78_0.15_220/0.10)]" />
+                <li key={s} className="relative shrink-0">
+                  <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-cyan-electric shadow-[0_0_0_4px_oklch(0.78_0.15_220/0.10)]" />
 
-                  <div className="grid grid-cols-2 gap-x-8 items-center">
+                  <div className="grid grid-cols-2 gap-x-4 items-center">
                     <div className={`${flip ? "col-start-2 flex justify-start" : "col-start-1 flex justify-end"}`}>
-                      <div className="relative w-[360px]">
-                      {/* card */}
-                      <div className="relative overflow-hidden rounded-2xl bg-deep border border-cream/10 shadow-[0_1px_2px_oklch(0.16_0.04_250/0.10),0_18px_36px_oklch(0.16_0.04_250/0.18)] h-16 flex items-center">
-                        {/* card background style: grid + aurora + fade */}
-                        <div className="absolute inset-0 grid-bg-dark opacity-35 pointer-events-none" />
-                        <div className="absolute inset-0 gradient-aurora opacity-80 pointer-events-none" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-deep/60 via-deep/80 to-ink/60 pointer-events-none" />
+                      <div className="relative w-full max-w-[300px]">
+                        <div className="relative overflow-hidden rounded-xl bg-deep border border-cream/10 shadow-[0_1px_2px_oklch(0.16_0.04_250/0.10),0_12px_24px_oklch(0.16_0.04_250/0.16)] h-12 flex items-center">
+                          <div className="absolute inset-0 grid-bg-dark opacity-35 pointer-events-none" />
+                          <div className="absolute inset-0 gradient-aurora opacity-80 pointer-events-none" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-deep/60 via-deep/80 to-ink/60 pointer-events-none" />
 
-                        <div className="min-w-0 flex-1">
-                          <div
-                            className={`relative font-display text-lg text-cream font-semibold leading-tight truncate ${
-                              flip ? "pl-16 pr-6" : "pr-16 pl-6"
-                            } ${flip ? "text-left" : "text-right"}`}
-                          >
-                            {s}
+                          <div className="min-w-0 flex-1">
+                            <div
+                              className={`relative font-display text-[0.9375rem] text-cream font-semibold leading-tight truncate ${
+                                flip ? "pl-12 pr-4" : "pr-12 pl-4"
+                              } ${flip ? "text-left" : "text-right"}`}
+                            >
+                              {s}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          className={`pointer-events-none absolute top-1/2 -translate-y-1/2 z-20 ${
+                            flip ? "-left-1.5" : "-right-1.5"
+                          }`}
+                        >
+                          <div className="relative w-11 h-11 rounded-full bg-deep/85 backdrop-blur border-2 border-cyan-electric/55 shadow-[0_0_0_1px_oklch(0.78_0.15_220/0.22),0_12px_24px_oklch(0.16_0.04_250/0.16)] grid place-items-center">
+                            <div className="absolute -inset-1.5 rounded-full bg-cyan-electric/15 blur-md" />
+                            <span className="relative font-display text-[13px] tracking-tight text-cyan-electric drop-shadow-[0_1px_0_oklch(0.98_0.005_240/0.7)]">
+                              {n}
+                            </span>
                           </div>
                         </div>
                       </div>
-
-                      {/* number bubble — overlaps card, near spine */}
-                      <div
-                        className={`pointer-events-none absolute top-1/2 -translate-y-1/2 z-20 ${
-                          flip ? "-left-2" : "-right-2"
-                        }`}
-                      >
-                        <div className="relative w-14 h-14 rounded-full bg-deep/85 backdrop-blur border-[3px] border-cyan-electric/55 shadow-[0_0_0_1px_oklch(0.78_0.15_220/0.22),0_18px_38px_oklch(0.16_0.04_250/0.18)] grid place-items-center">
-                          <div className="absolute -inset-2 rounded-full bg-cyan-electric/15 blur-md" />
-                          <span className="relative font-display text-[15px] tracking-tight text-cyan-electric drop-shadow-[0_1px_0_oklch(0.98_0.005_240/0.7)]">
-                            {n}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
                     </div>
                     <div className={`${flip ? "col-start-1" : "col-start-2"}`} />
                   </div>
@@ -428,6 +423,7 @@ export function Fluxo() {
               );
             })}
           </ol>
+          </div>
         </div>
       </div>
     </section>
@@ -451,7 +447,7 @@ export function Resultados() {
     <section
       id="plataforma"
       ref={ref}
-      className="reveal pt-28 pb-16 lg:pt-36 lg:pb-20 bg-deep text-cream relative overflow-hidden"
+      className="reveal site-slide py-28 lg:py-36 bg-deep text-cream relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-dark opacity-30" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-electric/8 rounded-full blur-3xl" />
@@ -507,7 +503,7 @@ export function Campo() {
     <section
       id="beneficios"
       ref={ref}
-      className="reveal pt-16 pb-28 lg:pt-20 lg:pb-36 bg-background relative overflow-hidden"
+      className="reveal site-slide py-28 lg:py-36 bg-background relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-45 pointer-events-none" />
       {/* Section divider */}
@@ -578,7 +574,7 @@ export function Industrial() {
     <section
       id="engenharia"
       ref={ref}
-      className="reveal py-28 lg:py-36 bg-secondary/40 relative overflow-hidden"
+      className="reveal site-slide py-28 lg:py-36 bg-secondary/40 relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-35 pointer-events-none" />
       {/* Section divider */}
@@ -677,7 +673,7 @@ export function Diferencial() {
     <section
       id="confidencialidade"
       ref={ref}
-      className="reveal py-32 lg:py-44 bg-deep text-cream relative overflow-hidden"
+      className="reveal site-slide py-28 lg:py-36 bg-deep text-cream relative overflow-hidden"
     >
       <div className="absolute inset-0 gradient-mesh opacity-60" />
       <div className="absolute inset-0 grid-bg-dark opacity-25" />
@@ -745,7 +741,7 @@ export function Cta() {
     <section
       id="contato"
       ref={ref}
-      className="reveal py-28 lg:py-36 bg-background relative overflow-hidden"
+      className="reveal site-slide py-28 lg:py-36 bg-background relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-55 pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-electric/10 rounded-full blur-3xl" />
@@ -760,7 +756,7 @@ export function Cta() {
           <span className="text-gradient">controle completo</span> da sua operação.
         </h2>
         <p className="mt-6 text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          Acompanhe as análises técnicas em um ambiente integrado para ganhar previsibilidade e reduzir retrabalho.
+          Acompanhe as análises técnicas em um plataforma integrada para ganhar previsibilidade e reduzir retrabalho.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">

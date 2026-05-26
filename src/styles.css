@@ -188,6 +188,14 @@
   }
   .reveal.in-view { opacity: 1; transform: translateY(0); }
 
+  .site-slide {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    scroll-margin-top: 6.25rem;
+  }
+
   .text-balance { text-wrap: balance; }
 
   .gradient-hero { background: var(--gradient-hero); }
