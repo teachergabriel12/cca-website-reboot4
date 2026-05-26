@@ -278,100 +278,53 @@ export function Fluxo() {
     <section
       id="fluxo"
       ref={ref}
-      className="reveal site-slide py-28 lg:py-36 bg-deep text-cream relative overflow-hidden"
+      className="reveal site-slide site-slide-auto-height py-20 sm:py-24 lg:py-36 bg-deep text-cream relative overflow-x-hidden"
     >
       <div className="absolute inset-0 grid-bg-dark opacity-30 pointer-events-none" />
       <div className="absolute inset-0 gradient-aurora opacity-70 pointer-events-none" />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full">
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 xl:gap-24 lg:items-center">
-          <div className="text-center lg:text-left max-w-3xl mx-auto lg:mx-0 mb-12 lg:mb-0">
+          <div className="text-left max-w-3xl lg:mx-0 mb-8 sm:mb-10 lg:mb-0">
             <div className="inline-flex">
               <Eyebrow n="04" label="Fluxo operacional" />
             </div>
-            <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl font-medium leading-[1.02] tracking-tight text-balance">
+            <h2 className="font-display text-[1.75rem] sm:text-4xl lg:text-5xl xl:text-6xl font-medium leading-[1.05] sm:leading-[1.02] tracking-tight text-balance">
               Gestão técnica estruturada em{" "}
               <span className="text-gradient">todas as etapas</span> da pós-obra
             </h2>
-            <p className="mt-6 text-cream/75 text-lg leading-relaxed">
+            <p className="mt-4 sm:mt-6 text-cream/75 text-base sm:text-lg leading-relaxed">
               Cada etapa é conduzida com critérios técnicos, garantindo rastreabilidade,
               padronização e segurança na tomada de decisão.
             </p>
           </div>
 
           <div className="relative min-w-0">
-          {/* Mobile — timeline cards (like the reference) */}
-          <ol className="sm:hidden relative">
-            {/* dashed spine */}
-            <div className="pointer-events-none absolute left-3 top-2 bottom-2 border-l border-dashed border-border/70" />
+          {/* Mobile / tablet — timeline vertical */}
+          <ol className="lg:hidden relative">
+            <div className="pointer-events-none absolute left-[1.125rem] top-3 bottom-3 border-l border-dashed border-cream/25" />
 
             {steps.map((s, i) => {
-              const flip = i % 2 === 1;
               const n = String(i + 1).padStart(2, "0");
               return (
-                <li key={s} className="relative py-2">
-                  {/* node dot on the spine */}
-                  <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-cyan-electric shadow-[0_0_0_4px_oklch(0.78_0.15_220/0.10)]" />
+                <li key={s} className="relative flex items-stretch gap-3 py-1.5 sm:py-2 pl-9 sm:pl-10">
+                  <span className="pointer-events-none absolute left-[1.125rem] top-1/2 z-10 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-electric shadow-[0_0_0_4px_oklch(0.78_0.15_220/0.10)]" />
 
-                  {/* card */}
-                  <div className="relative px-9">
-                    <div
-                      className={`relative overflow-hidden rounded-2xl bg-deep border border-cream/10 shadow-[0_1px_2px_oklch(0.16_0.04_250/0.10),0_18px_36px_oklch(0.16_0.04_250/0.18)] h-16 flex items-center ${
-                        flip ? "flex-row-reverse text-right" : "flex-row text-left"
-                      }`}
-                    >
-                      {/* card background style: grid + aurora + fade */}
-                      <div className="absolute inset-0 grid-bg-dark opacity-35 pointer-events-none" />
-                      <div className="absolute inset-0 gradient-aurora opacity-80 pointer-events-none" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-deep/60 via-deep/80 to-ink/60 pointer-events-none" />
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center self-center rounded-full border-2 border-cyan-electric/55 bg-deep/95 font-display text-[13px] tracking-tight text-cyan-electric sm:h-11 sm:w-11 sm:text-sm">
+                    {n}
+                  </div>
 
-                      <div className="min-w-0 flex-1">
-                        <div
-                          className={`relative font-display text-[1.02rem] text-cream font-semibold leading-tight truncate ${
-                            flip ? "pr-12 pl-5" : "pl-12 pr-5"
-                          }`}
-                        >
-                          {s}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* number bubble (alternates side) — overlaps card */}
-                    <div
-                      className={`pointer-events-none absolute top-1/2 -translate-y-1/2 z-20 ${
-                        flip ? "-right-2" : "-left-2"
-                      }`}
-                    >
-                      <div className="relative w-14 h-14 rounded-full bg-deep/90 backdrop-blur border-[3px] border-cyan-electric/55 shadow-[0_0_0_1px_oklch(0.78_0.15_220/0.22),0_18px_38px_oklch(0.16_0.04_250/0.18)] grid place-items-center">
-                        <div className="absolute -inset-2 rounded-full bg-cyan-electric/15 blur-md" />
-                        <span className="relative font-display text-[15px] tracking-tight text-cyan-electric drop-shadow-[0_1px_0_oklch(0.98_0.005_240/0.7)]">
-                          {n}
-                        </span>
-                      </div>
-                    </div>
+                  <div className="relative min-w-0 flex-1 overflow-hidden rounded-xl border border-cream/10 bg-deep px-3.5 py-3 sm:rounded-2xl sm:px-4 sm:py-3.5">
+                    <div className="pointer-events-none absolute inset-0 grid-bg-dark opacity-35" />
+                    <div className="pointer-events-none absolute inset-0 gradient-aurora opacity-80" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-deep/60 via-deep/80 to-ink/60" />
+                    <p className="relative font-display text-[0.9375rem] font-semibold leading-snug text-cream sm:text-base">
+                      {s}
+                    </p>
                   </div>
                 </li>
               );
             })}
           </ol>
-
-          {/* Tablet — grid */}
-          <div className="hidden sm:grid lg:hidden grid-cols-3 gap-6">
-            {steps.map((s, i) => (
-              <div
-                key={s}
-                className="group flex flex-col items-start gap-4 relative"
-              >
-                <div className="relative z-10 w-16 h-16 rounded-full bg-card border border-border group-hover:border-cyan-electric group-hover:bg-cyan-electric group-hover:shadow-[0_0_30px_oklch(0.78_0.15_220/0.5)] transition-all duration-300 flex items-center justify-center font-mono text-sm text-foreground group-hover:text-deep shrink-0">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <div className="min-w-0">
-                  <div className="font-display text-lg lg:text-xl text-foreground leading-tight">
-                    {s}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
 
           {/* Desktop — timeline intercalada (coluna direita) */}
           <ol className="hidden lg:flex lg:flex-col lg:justify-between lg:h-[min(58dvh,560px)] relative w-full">

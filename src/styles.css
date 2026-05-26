@@ -196,6 +196,13 @@
     scroll-margin-top: 6.25rem;
   }
 
+  @media (max-width: 1023px) {
+    .site-slide-auto-height {
+      min-height: 0;
+      justify-content: flex-start;
+    }
+  }
+
   .text-balance { text-wrap: balance; }
 
   .gradient-hero { background: var(--gradient-hero); }
