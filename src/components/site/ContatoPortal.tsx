@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import fieldImg from "@/assets/newimg1.jpeg";
 import industrialImg from "@/assets/newimg2.jpeg";
@@ -9,11 +9,23 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import type { ContactFlow, ContactSubmission } from "@/lib/contact";
 
-type Flow = null | "construtora" | "industria";
+type Flow = null | ContactFlow;
 type StepNum = 1 | 2 | 3 | 4;
 
-const MAIL = "contato@cca-engenharia.com.br";
+async function submitContact(payload: ContactSubmission) {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const data = (await response.json()) as { ok: boolean; message: string; leadId?: string };
+  if (!response.ok || !data.ok) {
+    throw new Error(data.message || "Não foi possível enviar a solicitação.");
+  }
+  return data;
+}
 
 const CONSTRUTORA_TEMAS = [
   "Garantia predial",
@@ -230,28 +242,35 @@ function ConstrutoraFormWizard({
   const [tipos, setTipos] = useState<Set<string>>(() => new Set());
   const [numEmp, setNumEmp] = useState("");
   const [volume, setVolume] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
-  const mailto = useMemo(() => {
-    const lines = [
-      "=== Atendimento Técnico Pós-obra (Construtora/Incorporadora) ===",
-      `Nome: ${nome}`,
-      `Empresa: ${empresa}`,
-      `Cargo: ${cargo}`,
-      `WhatsApp: ${whatsapp}`,
-      `E-mail: ${email}`,
-      "",
-      "Temas da operação:",
-      ...[...temas].map((t) => `• ${t}`),
-      "",
-      "Tipos de empreendimento:",
-      ...[...tipos].map((t) => `• ${t}`),
-      "",
-      `Número de empreendimentos: ${numEmp}`,
-      `Volume aproximado de atendimentos: ${volume}`,
-    ];
-    const body = lines.join("\n");
-    return `mailto:${MAIL}?subject=${encodeURIComponent("Portal CCA — Construtora/Incorporadora")}&body=${encodeURIComponent(body)}`;
-  }, [nome, empresa, cargo, whatsapp, email, temas, tipos, numEmp, volume]);
+  const handleSubmit = async () => {
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      await submitContact({
+        flow: "construtora",
+        nome,
+        empresa,
+        cargo,
+        whatsapp,
+        email,
+        details: {
+          temas: [...temas],
+          tipos_empreendimento: [...tipos],
+          numero_empreendimentos: numEmp,
+          volume_atendimentos: volume,
+        },
+      });
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Erro ao enviar.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const step1Valid = nome.trim() && empresa.trim() && cargo.trim() && whatsapp.trim() && email.trim();
   const step2Valid = temas.size > 0;
@@ -364,17 +383,27 @@ function ConstrutoraFormWizard({
   }
 
   return (
-    <FormShell badge="Construtora / Incorporadora" title="Informações registradas com sucesso." onBack={onCancel}>
+    <FormShell badge="Construtora / Incorporadora" title={submitted ? "Solicitação enviada com sucesso." : "Revisar e enviar"} onBack={onCancel}>
       <p className="text-muted-foreground leading-relaxed">
-        As informações serão avaliadas pela equipe técnica da CCA para entendimento inicial das necessidades
-        operacionais relacionadas ao pós-obra.
+        {submitted
+          ? "As informações foram registradas e encaminhadas à equipe técnica da CCA para avaliação inicial das necessidades operacionais relacionadas ao pós-obra."
+          : "Confira os dados e envie sua solicitação. Nossa equipe retornará pelo e-mail ou WhatsApp informados."}
       </p>
+      {submitError ? (
+        <p className="mt-4 text-sm text-destructive" role="alert">
+          {submitError}
+        </p>
+      ) : null}
       <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-between">
-        <Button variant="outline" onClick={() => setStep(3)}>
+        <Button variant="outline" onClick={() => setStep(3)} disabled={submitting || submitted}>
           Voltar
         </Button>
-        <Button asChild className="bg-cyan-electric text-deep">
-          <a href={mailto}>Enviar Informações</a>
+        <Button
+          className="bg-cyan-electric text-deep"
+          disabled={submitting || submitted}
+          onClick={() => void handleSubmit()}
+        >
+          {submitting ? "Enviando…" : submitted ? "Enviado" : "Enviar informações"}
         </Button>
       </div>
     </FormShell>
@@ -400,28 +429,36 @@ function IndustriaFormWizard({
   const [areaOp, setAreaOp] = useState("");
   const [regime, setRegime] = useState("");
   const [intervencoes, setIntervencoes] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
-  const mailto = useMemo(() => {
-    const lines = [
-      "=== Atendimento Técnico Industrial ===",
-      `Nome: ${nome}`,
-      `Empresa: ${empresa}`,
-      `Cargo: ${cargo}`,
-      `WhatsApp: ${whatsapp}`,
-      `E-mail: ${email}`,
-      "",
-      "Condições da operação:",
-      ...[...condicoes].map((t) => `• ${t}`),
-      "",
-      "Setores / tipos:",
-      ...[...setores].map((t) => `• ${t}`),
-      "",
-      `Área operacional aproximada: ${areaOp}`,
-      `Regime operacional: ${regime}`,
-      `Intervenções recorrentes: ${intervencoes}`,
-    ];
-    return `mailto:${MAIL}?subject=${encodeURIComponent("Portal CCA — Indústria")}&body=${encodeURIComponent(lines.join("\n"))}`;
-  }, [nome, empresa, cargo, whatsapp, email, condicoes, setores, areaOp, regime, intervencoes]);
+  const handleSubmit = async () => {
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      await submitContact({
+        flow: "industria",
+        nome,
+        empresa,
+        cargo,
+        whatsapp,
+        email,
+        details: {
+          condicoes_operacao: [...condicoes],
+          setores: [...setores],
+          area_operacional: areaOp,
+          regime_operacional: regime,
+          intervencoes_recorrentes: intervencoes,
+        },
+      });
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Erro ao enviar.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const step1Valid = nome.trim() && empresa.trim() && cargo.trim() && whatsapp.trim() && email.trim();
   const step2Valid = condicoes.size > 0;
@@ -535,17 +572,27 @@ function IndustriaFormWizard({
   }
 
   return (
-    <FormShell badge="Indústria" title="Informações registradas com sucesso." onBack={onCancel}>
+    <FormShell badge="Indústria" title={submitted ? "Solicitação enviada com sucesso." : "Revisar e enviar"} onBack={onCancel}>
       <p className="text-muted-foreground leading-relaxed">
-        As informações serão avaliadas pela equipe técnica da CCA para entendimento inicial das necessidades
-        relacionadas às condições operacionais do ativo industrial.
+        {submitted
+          ? "As informações foram registradas e encaminhadas à equipe técnica da CCA para avaliação inicial das necessidades relacionadas às condições operacionais do ativo industrial."
+          : "Confira os dados e envie sua solicitação. Nossa equipe retornará pelo e-mail ou WhatsApp informados."}
       </p>
+      {submitError ? (
+        <p className="mt-4 text-sm text-destructive" role="alert">
+          {submitError}
+        </p>
+      ) : null}
       <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-between">
-        <Button variant="outline" onClick={() => setStep(3)}>
+        <Button variant="outline" onClick={() => setStep(3)} disabled={submitting || submitted}>
           Voltar
         </Button>
-        <Button asChild className="bg-cyan-electric text-deep">
-          <a href={mailto}>Enviar Informações</a>
+        <Button
+          className="bg-cyan-electric text-deep"
+          disabled={submitting || submitted}
+          onClick={() => void handleSubmit()}
+        >
+          {submitting ? "Enviando…" : submitted ? "Enviado" : "Enviar informações"}
         </Button>
       </div>
     </FormShell>

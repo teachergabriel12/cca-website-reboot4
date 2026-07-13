@@ -16,6 +16,10 @@ dist-ssr
 .nitro
 .vercel
 *.local
+.env
+.env.*
+!.env.example
+data/leads.jsonl
 
 # Wrangler / Cloudflare
 .wrangler/
