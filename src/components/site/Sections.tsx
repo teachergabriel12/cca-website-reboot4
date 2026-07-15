@@ -1,7 +1,7 @@
 import { useReveal, useCountUp } from "@/hooks/use-reveal";
 import industrialImg from "@/assets/newimg2.jpeg";
 import sistemaMockImg from "@/assets/VS PC VS MOBILE MOCK SITE 1.png";
-import fieldImg from "@/assets/newimg1.jpeg";
+import fieldImg from "@/assets/img diagnostico tecnico skeleto predio.jpeg";
 import logoCCA from "@/assets/ChatGPT Image 11 de mai. de 2026, 15_25_03 (1).png";
 
 /* Helper — small section eyebrow */
@@ -468,7 +468,7 @@ export function Campo() {
           <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-border shadow-2xl">
             <img
               src={fieldImg}
-              alt="Equipe técnica em campo realizando inspeção"
+              alt="Diagnóstico técnico com esqueleto estrutural do prédio"
               className="w-full h-full object-cover"
               loading="lazy"
               width={1280}
