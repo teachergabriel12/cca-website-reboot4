@@ -33,7 +33,7 @@ export function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-5 sm:pt-8 lg:pt-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Left — copy */}
         <div className="lg:col-span-6">
-          <h1 className="font-display text-[2rem] sm:text-4xl lg:text-5xl xl:text-[4rem] font-medium leading-[1] tracking-tight text-balance">
+          <h1 className="font-display text-[2rem] sm:text-4xl lg:text-5xl xl:text-[3rem] font-medium leading-[1] tracking-tight text-balance">
             Gestão técnica que transforma a{" "}
             <span className="text-gradient">garantia predial</span> num processo estruturado de ponta a ponta.
           </h1>
