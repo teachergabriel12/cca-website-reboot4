@@ -43,21 +43,21 @@ export function Problema() {
     <section
       id="problema"
       ref={ref}
-      className="reveal site-slide py-28 lg:py-36 relative bg-background overflow-hidden"
+      className="reveal site-slide relative bg-background overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-60 pointer-events-none" />
       {/* Section divider */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-electric/25 to-transparent opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b from-cyan-electric/8 to-transparent" />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-12 gap-10 items-start">
+      <div className="slide-stage relative max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="grid lg:grid-cols-12 slide-grid items-center">
           <div className="lg:col-span-5">
             <Eyebrow n="02" label="O problema" />
-            <h2 className="font-display text-4xl lg:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-tight text-foreground text-balance">
+            <h2 className="slide-title font-display font-medium leading-[1.02] tracking-tight text-foreground text-balance">
               Transforme sua pós-obra em um{" "}
               <span className="text-gradient">processo estruturado</span>
             </h2>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            <p className="slide-copy text-muted-foreground">
               Após a entrega, é comum que os chamados sejam direcionados ao SAC
               sem um fluxo técnico bem definido. Com uma abordagem estruturada,
               é possível ganhar previsibilidade, reduzir retrabalho e tomar
@@ -70,7 +70,7 @@ export function Problema() {
               {items.map((it, idx) => (
                 <div
                   key={it.n}
-                  className={`relative overflow-hidden p-7 rounded-xl bg-deep text-cream border border-cream/10 hover:bg-ink hover:border-cyan-electric/30 hover:-translate-y-1 transition-all group ${
+                  className={`slide-card relative overflow-hidden rounded-xl bg-deep text-cream border border-cream/10 hover:bg-ink hover:border-cyan-electric/30 hover:-translate-y-1 transition-all group ${
                     idx === items.length - 1 ? "sm:col-span-2" : ""
                   }`}
                 >
@@ -79,7 +79,7 @@ export function Problema() {
                   <div className="absolute inset-0 bg-gradient-to-br from-deep/40 via-transparent to-transparent pointer-events-none" />
 
                   <div className="flex items-start justify-between mb-3">
-                    <div className="relative font-display text-xl lg:text-2xl text-cream leading-tight">
+                    <div className="slide-card-title relative font-display text-cream leading-tight">
                       {it.t}
                     </div>
                     <span className="relative font-mono text-[10px] text-cream/60">{it.n}</span>
@@ -105,7 +105,7 @@ export function Solucao() {
     <section
       id="pilares"
       ref={ref}
-      className="reveal site-slide py-28 lg:py-40 bg-background relative overflow-hidden"
+      className="reveal site-slide bg-background relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-55 pointer-events-none" />
       <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-cyan-electric/15 rounded-full blur-3xl" />
@@ -114,14 +114,14 @@ export function Solucao() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-electric/25 to-transparent opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b from-cyan-electric/8 to-transparent" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center">
+      <div className="slide-stage relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 slide-grid items-center">
         <div className="lg:col-span-7">
           <Eyebrow n="05" label="Pilares da metodologia" />
-          <h2 className="font-display text-5xl lg:text-7xl xl:text-8xl font-medium leading-[0.98] tracking-tight text-balance text-foreground">
+          <h2 className="slide-title slide-title-xl font-display font-medium leading-[0.98] tracking-tight text-balance text-foreground">
             Gestão técnica transforma a garantia predial em um{" "}
             <span className="text-gradient">processo controlado</span>
           </h2>
-          <p className="mt-8 text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed">
+          <p className="slide-copy text-muted-foreground max-w-xl">
             Com critérios técnicos, padronização e acompanhamento estruturado, a pós-obra deixa
             de ser reativa e passa a operar com previsibilidade e controle.
           </p>
@@ -135,7 +135,7 @@ export function Solucao() {
           ].map((it) => (
             <div
               key={it.k}
-              className="relative overflow-hidden p-6 lg:p-8 rounded-xl bg-deep text-cream border border-cream/10 hover:bg-ink hover:border-cyan-electric/30 transition-colors group min-h-[110px] lg:min-h-[140px]"
+              className="slide-card relative overflow-hidden rounded-xl bg-deep text-cream border border-cream/10 hover:bg-ink hover:border-cyan-electric/30 transition-colors group min-h-0"
             >
               <div className="absolute inset-0 grid-bg-dark opacity-30 pointer-events-none" />
               <div className="absolute inset-0 gradient-aurora opacity-70 pointer-events-none" />
@@ -144,7 +144,7 @@ export function Solucao() {
               <div className="relative font-mono text-[10px] lg:text-[11px] uppercase tracking-[0.25em] text-cyan-electric mb-2">
                 {it.k}
               </div>
-              <div className="relative font-display text-xl lg:text-3xl text-cream leading-[1.05] tracking-tight">
+              <div className="slide-card-title relative font-display text-cream leading-[1.05] tracking-tight">
                 {it.v}
               </div>
               <p className="relative mt-3 text-sm lg:text-[15px] text-cream/75 leading-relaxed">
@@ -172,21 +172,21 @@ export function Plataforma() {
     <section
       id="solucao"
       ref={ref}
-      className="reveal site-slide py-28 lg:py-36 bg-deep text-cream relative overflow-hidden"
+      className="reveal site-slide bg-deep text-cream relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-dark opacity-25 pointer-events-none" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-electric/10 rounded-full blur-3xl" />
       {/* Section divider */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cream/15 to-transparent opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b from-cream/6 to-transparent" />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12">
+      <div className="slide-stage relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 slide-grid">
         <div className="lg:col-span-5">
           <Eyebrow n="04" label="A solução" />
-          <h2 className="font-display text-4xl lg:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-tight text-balance">
+          <h2 className="slide-title font-display font-medium leading-[1.02] tracking-tight text-balance">
             Gestão Técnica da{" "}
             <span className="text-gradient">Garantia Predial</span>.
           </h2>
-          <p className="mt-6 text-lg text-cream/75 leading-relaxed">
+          <p className="slide-copy text-cream/75">
             Estruturamos todo o pós-obra com metodologia técnica e uma plataforma
             digital integrada que organiza cada etapa da operação.
           </p>
@@ -196,12 +196,12 @@ export function Plataforma() {
           {items.map((it, i) => (
             <div
               key={it.t}
-              className={`p-7 rounded-xl glass border border-cream/10 hover:bg-cream/10 hover:-translate-y-1 transition-all group ${
+              className={`slide-card rounded-xl glass border border-cream/10 hover:bg-cream/10 hover:-translate-y-1 transition-all group ${
                 i === 0 ? "sm:col-span-2" : ""
               }`}
             >
               <div className="flex items-start justify-between mb-3">
-                <div className="font-display text-xl lg:text-2xl text-cream leading-tight">{it.t}</div>
+                <div className="slide-card-title font-display text-cream leading-tight">{it.t}</div>
                 <span className="font-mono text-[10px] text-cream/60">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -226,7 +226,7 @@ export function Sistema() {
     <section
       id="sistema"
       ref={ref}
-      className="reveal site-slide py-28 lg:py-36 bg-background relative overflow-hidden"
+      className="reveal site-slide bg-background relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-45 pointer-events-none" />
       <div className="absolute -top-24 -left-24 w-[520px] h-[520px] bg-cyan-electric/10 rounded-full blur-3xl" />
@@ -236,14 +236,14 @@ export function Sistema() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-electric/25 to-transparent opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b from-cyan-electric/8 to-transparent" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center">
+      <div className="slide-stage relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 slide-grid items-center">
         <div className="lg:col-span-5">
           <Eyebrow n="10" label="Nosso sistema" />
-          <h2 className="font-display text-4xl lg:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-tight text-balance text-foreground">
+          <h2 className="slide-title font-display font-medium leading-[1.02] tracking-tight text-balance text-foreground">
             Um sistema técnico{" "}
             <span className="text-gradient">centralizado</span> para decisões seguras
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
+          <p className="slide-copy text-muted-foreground max-w-xl">
             Centralizamos as etapas do pós-obra na plaforma: Demanda, Registro,
             Triagem, Planejamento, Inspeção, Diagnóstico, Prescrição técnica, Laudo e Fechamento. Assim, você ganha previsibilidade,
             reduz retrabalho e mantém evidências auditáveis.
@@ -251,7 +251,7 @@ export function Sistema() {
         </div>
 
         <div className="lg:col-span-7 relative">
-          <div className="relative">
+          <div className="slide-media slide-media-contain relative">
             <img
               src={sistemaMockImg}
               alt="Plataforma CCA — mockups desktop e mobile"
@@ -278,21 +278,21 @@ export function Fluxo() {
     <section
       id="fluxo"
       ref={ref}
-      className="reveal site-slide site-slide-auto-height py-20 sm:py-24 lg:py-36 bg-deep text-cream relative overflow-x-hidden"
+      className="reveal site-slide site-slide-auto-height bg-deep text-cream relative overflow-x-hidden"
     >
       <div className="absolute inset-0 grid-bg-dark opacity-30 pointer-events-none" />
       <div className="absolute inset-0 gradient-aurora opacity-70 pointer-events-none" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-16 xl:gap-24 lg:items-center">
+      <div className="slide-stage relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full">
+        <div className="lg:grid lg:grid-cols-2 slide-grid lg:items-center">
           <div className="text-left max-w-3xl lg:mx-0 mb-8 sm:mb-10 lg:mb-0">
             <div className="inline-flex">
               <Eyebrow n="04" label="Fluxo operacional" />
             </div>
-            <h2 className="font-display text-[1.75rem] sm:text-4xl lg:text-5xl xl:text-6xl font-medium leading-[1.05] sm:leading-[1.02] tracking-tight text-balance">
+            <h2 className="slide-title font-display font-medium leading-[1.05] sm:leading-[1.02] tracking-tight text-balance">
               Gestão técnica estruturada em{" "}
               <span className="text-gradient">todas as etapas</span> da pós-obra
             </h2>
-            <p className="mt-4 sm:mt-6 text-cream/75 text-base sm:text-lg leading-relaxed">
+            <p className="slide-copy text-cream/75">
               Cada etapa é conduzida com critérios técnicos, garantindo rastreabilidade,
               padronização e segurança na tomada de decisão.
             </p>
@@ -327,7 +327,7 @@ export function Fluxo() {
           </ol>
 
           {/* Desktop — timeline intercalada (coluna direita) */}
-          <ol className="hidden lg:flex lg:flex-col lg:justify-between lg:h-[min(58dvh,560px)] relative w-full">
+          <ol className="fluxo-timeline hidden lg:flex lg:flex-col lg:justify-between relative w-full">
             <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-2 bottom-2 border-l border-dashed border-border/70" />
 
             {steps.map((s, i) => {
@@ -400,21 +400,21 @@ export function Resultados() {
     <section
       id="plataforma"
       ref={ref}
-      className="reveal site-slide py-28 lg:py-36 bg-deep text-cream relative overflow-hidden"
+      className="reveal site-slide bg-deep text-cream relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-dark opacity-30" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-electric/8 rounded-full blur-3xl" />
       {/* Section divider */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cream/15 to-transparent opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b from-cream/6 to-transparent" />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="mb-16 max-w-3xl">
+      <div className="slide-stage relative max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="slide-header max-w-3xl">
           <Eyebrow n="06" label="Funcionalidades" />
-          <h2 className="font-display text-4xl lg:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-tight text-balance">
+          <h2 className="slide-title font-display font-medium leading-[1.02] tracking-tight text-balance">
             Plataforma digital{" "}
             <span className="text-gradient">integrada</span>.
           </h2>
-          <p className="mt-6 text-lg text-cream/75 max-w-xl leading-relaxed">
+          <p className="slide-copy text-cream/75 max-w-xl">
             Tudo o que sua operação precisa para registrar, analisar e resolver
             ocorrências em um só lugar — com evidências e histórico auditável.
           </p>
@@ -424,12 +424,12 @@ export function Resultados() {
           {items.map((it) => (
             <div
               key={it.n}
-              className="bg-deep p-8 lg:p-10 hover:bg-ink transition-colors group relative"
+              className="slide-card bg-deep hover:bg-ink transition-colors group relative"
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-cyan-electric mb-6">
                 {it.n}
               </div>
-              <div className="font-display text-xl lg:text-2xl text-cream leading-tight">
+              <div className="slide-card-title font-display text-cream leading-tight">
                 {it.t}
               </div>
               <div className="absolute top-0 left-0 h-px w-0 bg-cyan-electric group-hover:w-full transition-all duration-700" />
@@ -456,16 +456,16 @@ export function Campo() {
     <section
       id="beneficios"
       ref={ref}
-      className="reveal site-slide py-28 lg:py-36 bg-background relative overflow-hidden"
+      className="reveal site-slide bg-background relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-45 pointer-events-none" />
       {/* Section divider */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-electric/25 to-transparent opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b from-cyan-electric/8 to-transparent" />
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center">
+      <div className="slide-stage max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 slide-grid items-center">
         <div className="lg:col-span-6 relative">
           <div className="absolute -inset-6 bg-cyan-electric/10 rounded-3xl blur-2xl" />
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-border shadow-2xl">
+          <div className="slide-media relative aspect-[4/5] rounded-2xl overflow-hidden border border-border shadow-2xl">
             <img
               src={fieldImg}
               alt="Diagnóstico técnico com esqueleto estrutural do prédio"
@@ -480,20 +480,20 @@ export function Campo() {
 
         <div className="lg:col-span-6">
           <Eyebrow n="06" label="Benefícios e resultados" />
-          <h2 className="font-display text-4xl lg:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-tight text-balance text-foreground">
+          <h2 className="slide-title font-display font-medium leading-[1.02] tracking-tight text-balance text-foreground">
             Mais controle e previsibilidade na sua{" "}
             <span className="text-gradient">pós-obra</span>.
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+          <p className="slide-copy text-muted-foreground">
             Resultados visíveis no balanço, no tempo de resposta e na confiança
             do cliente final.
           </p>
 
-          <ul className="mt-10 space-y-1">
+          <ul className="slide-stack mt-6 space-y-0">
             {items.map((it, i) => (
               <li
                 key={it}
-                className="flex items-center gap-4 py-4 border-b border-border group hover:border-cyan-electric transition-colors cursor-default"
+                className="flex items-center gap-4 py-3 border-b border-border group hover:border-cyan-electric transition-colors cursor-default"
               >
                 <span className="font-mono text-xs text-muted-foreground w-8">
                   {String(i + 1).padStart(2, "0")}
@@ -527,28 +527,28 @@ export function Industrial() {
     <section
       id="engenharia"
       ref={ref}
-      className="reveal site-slide py-28 lg:py-36 bg-secondary/40 relative overflow-hidden"
+      className="reveal site-slide bg-secondary/40 relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-35 pointer-events-none" />
       {/* Section divider */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-electric/25 to-transparent opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b from-cyan-electric/8 to-transparent" />
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center">
+      <div className="slide-stage max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 slide-grid items-center">
         <div className="lg:col-span-6 order-2 lg:order-1">
           <Eyebrow n="07" label="Engenharia diagnóstica" />
-          <h2 className="font-display text-4xl lg:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-tight text-balance text-foreground">
+          <h2 className="slide-title font-display font-medium leading-[1.02] tracking-tight text-balance text-foreground">
             Mais controle e previsibilidade na sua{" "}
             <span className="text-gradient">pós-obra</span>
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+          <p className="slide-copy text-muted-foreground">
             Um resumo da apresentação em etapas — do contexto ao impacto na operação.
           </p>
 
-          <div className="mt-10 space-y-3">
+          <div className="slide-stack mt-6 space-y-2">
             {map.map((it) => (
               <div
                 key={it.k}
-                className="relative overflow-hidden rounded-xl border border-border bg-background/70 backdrop-blur p-5 hover:border-cyan-electric/35 transition-colors"
+                className="slide-card relative overflow-hidden rounded-xl border border-border bg-background/70 backdrop-blur hover:border-cyan-electric/35 transition-colors"
               >
                 <div className="absolute inset-0 grid-bg-light opacity-30 pointer-events-none" />
                 <div className="relative font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -563,7 +563,7 @@ export function Industrial() {
         </div>
         <div className="lg:col-span-6 order-1 lg:order-2 relative">
           <div className="absolute -inset-6 bg-blue-soft/15 rounded-3xl blur-2xl" />
-          <div className="relative aspect-[5/4] rounded-2xl overflow-hidden border border-border shadow-2xl">
+          <div className="slide-media relative aspect-[5/4] rounded-2xl overflow-hidden border border-border shadow-2xl">
             <img
               src={industrialImg}
               alt="Inspeção técnica em ambiente industrial"
@@ -587,17 +587,17 @@ export function Experiencia() {
     <section
       id="resultado"
       ref={ref}
-      className="reveal py-28 lg:py-36 bg-background overflow-hidden relative"
+      className="reveal site-slide bg-background overflow-hidden relative"
     >
       <div className="absolute inset-0 grid-bg-light opacity-55 pointer-events-none" />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="max-w-3xl mb-16">
+      <div className="slide-stage relative max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="slide-header max-w-3xl">
           <Eyebrow n="09" label="Resultado" />
-          <h2 className="font-display text-4xl lg:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-tight text-balance text-foreground">
+          <h2 className="slide-title font-display font-medium leading-[1.02] tracking-tight text-balance text-foreground">
             De operação reativa para{" "}
             <span className="text-gradient">gestão estratégica</span>.
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+          <p className="slide-copy text-muted-foreground">
             A garantia predial deixa de ser um risco e passa a ser um processo
             controlado, inteligente e confiável.
           </p>
@@ -626,28 +626,28 @@ export function Diferencial() {
     <section
       id="confidencialidade"
       ref={ref}
-      className="reveal site-slide py-28 lg:py-36 bg-deep text-cream relative overflow-hidden"
+      className="reveal site-slide bg-deep text-cream relative overflow-hidden"
     >
       <div className="absolute inset-0 gradient-mesh opacity-60" />
       <div className="absolute inset-0 grid-bg-dark opacity-25" />
       {/* Section divider */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cream/15 to-transparent opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b from-cream/6 to-transparent" />
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-start">
+      <div className="slide-stage relative max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 slide-grid items-center">
         <div className="lg:col-span-6">
           <Eyebrow n="08" label="Confidencialidade e experiência" />
-          <h2 className="font-display text-4xl lg:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-tight text-balance">
+          <h2 className="slide-title font-display font-medium leading-[1.02] tracking-tight text-balance">
             <span className="block">Atuação técnica com</span>
             <span className="block">
               <span className="text-gradient">confidencialidade</span>
             </span>
           </h2>
-          <p className="mt-6 text-lg text-cream/75 leading-relaxed max-w-xl">
+          <p className="slide-copy text-cream/75 max-w-xl">
             Atuamos em operações de pós-obra e garantia predial com total
             confidencialidade, respeitando a integridade das informações e dos
             empreendimentos atendidos.
           </p>
-          <p className="mt-4 text-lg text-cream/75 leading-relaxed max-w-xl">
+          <p className="slide-copy mt-4 text-cream/75 max-w-xl">
             Por esse motivo, não divulgamos dados sensíveis ou identificação dos
             clientes, mantendo o foco na estruturação técnica da operação.
           </p>
@@ -672,8 +672,8 @@ export function Diferencial() {
               d: "Critérios claros, padronização e indicadores para previsibilidade do pós-obra.",
             },
           ].map((it) => (
-            <div key={it.t} className="p-7 rounded-xl glass hover:bg-cream/10 transition-colors">
-              <div className="font-display text-xl lg:text-2xl text-cream leading-tight">{it.t}</div>
+            <div key={it.t} className="slide-card rounded-xl glass hover:bg-cream/10 transition-colors">
+              <div className="slide-card-title font-display text-cream leading-tight">{it.t}</div>
               <p className="mt-3 text-sm text-cream/70 leading-relaxed">{it.d}</p>
               <div className="mt-6 h-px bg-cream/10" />
               <div className="mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-cyan-electric">
@@ -694,7 +694,7 @@ export function Cta() {
     <section
       id="contato"
       ref={ref}
-      className="reveal site-slide py-28 lg:py-36 bg-background relative overflow-hidden"
+      className="reveal site-slide bg-background relative overflow-hidden"
     >
       <div className="absolute inset-0 grid-bg-light opacity-55 pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-electric/10 rounded-full blur-3xl" />
@@ -702,17 +702,17 @@ export function Cta() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-electric/25 to-transparent opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b from-cyan-electric/8 to-transparent" />
 
-      <div className="relative max-w-4xl mx-auto px-6 lg:px-10 text-center">
+      <div className="slide-stage relative max-w-4xl mx-auto px-6 lg:px-10 text-center">
         <Eyebrow n="11" label="Vale a conversa" />
-        <h2 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.02] tracking-tight text-balance text-foreground">
+        <h2 className="mt-3 slide-title font-display font-medium leading-[1.02] tracking-tight text-balance text-foreground">
           Centralize seus chamados e tenha{" "}
           <span className="text-gradient">controle completo</span> da sua operação.
         </h2>
-        <p className="mt-6 text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+        <p className="slide-copy text-muted-foreground max-w-3xl mx-auto">
           Acompanhe as análises técnicas em um plataforma integrada para ganhar previsibilidade e reduzir retrabalho.
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
           <a
             href="https://wa.me/5585985097622"
             target="_blank"
@@ -723,7 +723,7 @@ export function Cta() {
           </a>
         </div>
 
-        <ul className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <ul className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           {["Operação estruturada", "Redução de retrabalho", "Decisões técnicas mais assertivas"].map((t) => (
             <li
               key={t}

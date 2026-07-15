@@ -29,7 +29,6 @@ async function submitContact(payload: ContactSubmission) {
 
 const CONSTRUTORA_TEMAS = [
   "Garantia predial",
-  "Assistência técnica",
   "Inspeção predial",
   "Diagnóstico técnico",
   "Laudos técnicos",
@@ -125,7 +124,7 @@ export function ContatoPortal() {
               </div>
               <div className="p-6 lg:p-8 flex flex-col flex-1">
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Soluções técnicas aplicadas à garantia predial, assistência técnica, inspeção e
+                  Soluções técnicas aplicadas à garantia predial, inspeção e
                   organização operacional de edificações.
                 </p>
                 <h4 className="mt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-electric">
@@ -133,7 +132,6 @@ export function ContatoPortal() {
                 </h4>
                 <ul className="mt-3 space-y-1.5 text-sm text-foreground list-disc pl-5 flex-1">
                   <li>Garantia predial</li>
-                  <li>Assistência técnica</li>
                   <li>Inspeção predial</li>
                   <li>Diagnóstico técnico</li>
                   <li>Prognóstico</li>
