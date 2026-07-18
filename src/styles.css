@@ -161,7 +161,8 @@
   * { border-color: var(--color-border); }
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6.25rem;
+    /* Slides são 100dvh: offset do header cortaria a base do slide */
+    scroll-padding-top: 0;
   }
   body {
     background-color: var(--color-background);
@@ -204,7 +205,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    scroll-margin-top: 6.25rem;
+    /* Sem offset: o slide precisa preencher a viewport inteira */
+    scroll-margin-top: 0;
     padding-block: var(--slide-pad-y);
   }
 
@@ -267,6 +269,20 @@
     object-fit: contain;
     height: auto;
     max-height: var(--slide-media-h);
+  }
+
+  /* Retrato: altura própria (maior que o media padrão) e proporção estável */
+  .slide-media-portrait {
+    --slide-portrait-h: min(68dvh, 34rem);
+    width: min(100%, 28rem, calc(var(--slide-portrait-h) * 4 / 5));
+    max-width: 28rem;
+    aspect-ratio: 4 / 5;
+    height: auto;
+    max-height: none;
+  }
+
+  .slide-media-portrait img {
+    max-height: none;
   }
 
   .fluxo-timeline {
@@ -350,6 +366,14 @@
     .site-slide .slide-media {
       aspect-ratio: auto !important;
       height: var(--slide-media-h);
+    }
+
+    .site-slide .slide-media.slide-media-portrait {
+      --slide-portrait-h: min(58dvh, 26rem);
+      aspect-ratio: 4 / 5 !important;
+      height: auto !important;
+      width: min(100%, calc(var(--slide-portrait-h) * 4 / 5));
+      max-height: none;
     }
 
     .site-slide .slide-stack {

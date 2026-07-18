@@ -1,7 +1,7 @@
 import { useReveal, useCountUp } from "@/hooks/use-reveal";
-import industrialImg from "@/assets/newimg2.jpeg";
 import sistemaMockImg from "@/assets/VS PC VS MOBILE MOCK SITE 1.png";
 import fieldImg from "@/assets/img diagnostico tecnico skeleto predio.jpeg";
+import lupaPredioImg from "@/assets/lupa predio.jpeg";
 import logoCCA from "@/assets/ChatGPT Image 11 de mai. de 2026, 15_25_03 (1).png";
 
 /* Helper — small section eyebrow */
@@ -283,8 +283,8 @@ export function Fluxo() {
       <div className="absolute inset-0 grid-bg-dark opacity-30 pointer-events-none" />
       <div className="absolute inset-0 gradient-aurora opacity-70 pointer-events-none" />
       <div className="slide-stage relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full">
-        <div className="lg:grid lg:grid-cols-2 slide-grid lg:items-center">
-          <div className="text-left max-w-3xl lg:mx-0 mb-8 sm:mb-10 lg:mb-0">
+        <div className="lg:grid lg:grid-cols-12 slide-grid lg:items-center">
+          <div className="lg:col-span-5 text-left max-w-xl lg:mx-0 mb-8 sm:mb-10 lg:mb-0">
             <div className="inline-flex">
               <Eyebrow n="04" label="Fluxo operacional" />
             </div>
@@ -298,7 +298,7 @@ export function Fluxo() {
             </p>
           </div>
 
-          <div className="relative min-w-0">
+          <div className="lg:col-span-7 relative min-w-0">
           {/* Mobile / tablet — timeline vertical */}
           <ol className="lg:hidden relative">
             <div className="pointer-events-none absolute left-[1.125rem] top-3 bottom-3 border-l border-dashed border-cream/25" />
@@ -467,8 +467,8 @@ export function Campo() {
           <div className="absolute -inset-6 bg-cyan-electric/10 rounded-3xl blur-2xl" />
           <div className="slide-media relative aspect-[4/5] rounded-2xl overflow-hidden border border-border shadow-2xl">
             <img
-              src={fieldImg}
-              alt="Diagnóstico técnico com esqueleto estrutural do prédio"
+              src={lupaPredioImg}
+              alt="Inspeção técnica com lupa sobre o edifício"
               className="w-full h-full object-cover"
               loading="lazy"
               width={1280}
@@ -517,11 +517,11 @@ export function Campo() {
 export function Industrial() {
   const ref = useReveal<HTMLDivElement>();
   const map = [
-    { k: "Problema", v: "Desafios comuns na gestão da pós-obra" },
-    { k: "Solução", v: "Gestão técnica estruturada para a pós-obra" },
-    { k: "Como Funciona", v: "Gestão técnica estruturada em todas as etapas da pós-obra" },
-    { k: "Pilares", v: "Os pilares da gestão técnica da pós-obra" },
-    { k: "Resultados", v: "Mais controle e previsibilidade na sua pós-obra" },
+    { k: "Problema", v: "Ocorrências após a entrega do empreendimento." },
+    { k: "Solução", v: "Gestão Técnica estruturada da Garantia Predial." },
+    { k: "Como Funciona", v: "Fluxo técnico da Gestão da Garantia Predial." },
+    { k: "Pilares", v: "Os fundamentos da metodologia CCA." },
+    { k: "Resultados", v: "Controle, previsibilidade e segurança técnica." },
   ];
   return (
     <section
@@ -537,11 +537,12 @@ export function Industrial() {
         <div className="lg:col-span-6 order-2 lg:order-1">
           <Eyebrow n="07" label="Engenharia diagnóstica" />
           <h2 className="slide-title font-display font-medium leading-[1.02] tracking-tight text-balance text-foreground">
-            Mais controle e previsibilidade na sua{" "}
-            <span className="text-gradient">pós-obra</span>
+            Da ocorrência ao{" "}
+            <span className="text-gradient">controle técnico</span>
           </h2>
           <p className="slide-copy text-muted-foreground">
-            Um resumo da apresentação em etapas — do contexto ao impacto na operação.
+            Conheça como a CCA conduz a Gestão Técnica da Garantia Predial, da
+            identificação da ocorrência até a tomada de decisão.
           </p>
 
           <div className="slide-stack mt-6 space-y-2">
@@ -561,18 +562,17 @@ export function Industrial() {
             ))}
           </div>
         </div>
-        <div className="lg:col-span-6 order-1 lg:order-2 relative">
+        <div className="lg:col-span-6 order-1 lg:order-2 relative flex justify-center">
           <div className="absolute -inset-6 bg-blue-soft/15 rounded-3xl blur-2xl" />
-          <div className="slide-media relative aspect-[5/4] rounded-2xl overflow-hidden border border-border shadow-2xl">
+          <div className="slide-media slide-media-portrait relative rounded-2xl overflow-hidden border border-border shadow-2xl bg-white">
             <img
-              src={industrialImg}
-              alt="Inspeção técnica em ambiente industrial"
-              className="w-full h-full object-cover"
+              src={fieldImg}
+              alt="Engenharia Diagnóstica — Exame Clínico das Edificações"
+              className="w-full h-full object-cover object-center scale-[1.12]"
               loading="lazy"
-              width={1280}
-              height={1024}
+              width={900}
+              height={1200}
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-deep/40 via-transparent to-transparent" />
           </div>
         </div>
       </div>

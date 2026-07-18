@@ -2,6 +2,31 @@ import { useEffect, useState } from "react";
 import { MAIN_NAV_HEIGHT, SITE_HEADER_OFFSET_PX, SITE_SECTIONS } from "@/lib/siteSections";
 import { cn } from "@/lib/utils";
 
+/**
+ * Slides desktop têm height: 100dvh — alinhar ao topo da viewport
+ * (não abaixo do header), senão a base do slide fica cortada.
+ * Se a seção for mais alta que a tela, centraliza.
+ */
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const rect = el.getBoundingClientRect();
+  const sectionTop = window.scrollY + rect.top;
+  const vh = window.innerHeight;
+
+  const top =
+    rect.height > vh + 8
+      ? sectionTop + rect.height / 2 - vh / 2
+      : sectionTop;
+
+  const maxScroll = document.documentElement.scrollHeight - vh;
+  window.scrollTo({
+    top: Math.max(0, Math.min(top, maxScroll)),
+    behavior: "smooth",
+  });
+}
+
 export function SectionNav() {
   const [activeId, setActiveId] = useState<string>(SITE_SECTIONS[0].id);
 
@@ -32,6 +57,13 @@ export function SectionNav() {
     return () => observer.disconnect();
   }, []);
 
+  const handleNavClick = (id: string) => {
+    setActiveId(id);
+    // Atualiza a URL sem disparar scroll nativo do hash
+    history.replaceState(null, "", `#${id}`);
+    scrollToSection(id);
+  };
+
   return (
     <nav
       aria-label="Atalhos das seções"
@@ -44,9 +76,10 @@ export function SectionNav() {
             const isActive = activeId === id;
 
             return (
-              <a
+              <button
                 key={id}
-                href={`#${id}`}
+                type="button"
+                onClick={() => handleNavClick(id)}
                 className={cn(
                   "shrink-0 px-3 py-1 rounded-md font-mono text-[10px] uppercase tracking-[0.18em] transition-colors whitespace-nowrap",
                   isActive
@@ -56,7 +89,7 @@ export function SectionNav() {
                 aria-current={isActive ? "location" : undefined}
               >
                 {label}
-              </a>
+              </button>
             );
           })}
         </div>
