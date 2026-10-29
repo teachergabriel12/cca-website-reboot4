@@ -462,19 +462,18 @@ export function Campo() {
       {/* Section divider */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-electric/25 to-transparent opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b from-cyan-electric/8 to-transparent" />
-      <div className="slide-stage max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 slide-grid items-center">
+      <div className="slide-stage max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-12 slide-grid items-center lg:translate-y-8">
         <div className="lg:col-span-6 relative">
           <div className="absolute -inset-6 bg-cyan-electric/10 rounded-3xl blur-2xl" />
-          <div className="slide-media relative aspect-[4/5] rounded-2xl overflow-hidden border border-border shadow-2xl">
+          <div className="slide-media slide-media-wide relative rounded-2xl overflow-hidden border border-border shadow-2xl bg-deep">
             <img
               src={lupaPredioImg}
               alt="Inspeção técnica com lupa sobre o edifício"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain object-center"
               loading="lazy"
-              width={1280}
-              height={1024}
+              width={1600}
+              height={900}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-deep/60 via-transparent to-transparent" />
           </div>
         </div>
 

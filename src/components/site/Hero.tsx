@@ -1,4 +1,5 @@
 import heroBg from "@/assets/hero-building.jpg";
+import { HeroVideoPlayer } from "@/components/site/HeroVideoPlayer";
 
 export function Hero() {
   return (
@@ -63,30 +64,13 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right — video / dashboard mockup */}
+          {/* Right — video player */}
           <div className="hero-media lg:col-span-6 relative max-w-xl lg:max-w-none mx-auto w-full min-w-0">
-            {/* Glow halos */}
             <div className="absolute -inset-6 sm:-inset-8 bg-cyan-electric/20 rounded-3xl blur-3xl -z-10 animate-pulse" />
             <div className="absolute top-1/2 -right-10 w-28 h-28 bg-blue-soft/30 rounded-full blur-3xl -z-10 hidden sm:block" />
 
-            <div className="relative rounded-2xl overflow-hidden border border-cream/10 bg-deep/30 backdrop-blur-sm shadow-2xl shadow-deep/60">
-              <div className="hero-video relative bg-ink">
-                <div className="absolute inset-0 grid-bg-dark opacity-30 pointer-events-none" />
-                <div className="absolute inset-0 gradient-aurora opacity-60 pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-deep/40 via-transparent to-transparent pointer-events-none" />
-
-                <video
-                  className="relative z-[1] w-full h-full object-cover"
-                  src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-                  poster={heroBg}
-                  controls
-                  playsInline
-                  muted
-                  loop
-                  autoPlay
-                  preload="metadata"
-                />
-              </div>
+            <div className="relative rounded-2xl overflow-hidden border border-cream/15 bg-deep/40 backdrop-blur-sm shadow-2xl shadow-deep/60 ring-1 ring-cyan-electric/15">
+              <HeroVideoPlayer />
             </div>
           </div>
         </div>
